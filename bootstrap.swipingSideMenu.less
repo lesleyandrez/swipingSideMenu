@@ -1,0 +1,110 @@
+.swiping-side-menu {
+    @offset-lg: 300px;
+    @offset-md: 300px;
+    @offset-sm: 300px;
+    @offset-xs: 70%;
+    @offset-xxs: 90%;
+
+    @easing: ease-in-out;
+    @speed: .33s;
+
+    @media (min-width: @grid-float-breakpoint) {
+        &-backdrop {
+            display: none;
+        }
+    }
+
+    @media (max-width: @grid-float-breakpoint-max) {
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        transition: transform @easing @speed;
+
+        background-color: @navbar-default-bg;
+        color: @navbar-default-color;
+
+        position: fixed !important;
+        z-index: @zindex-navbar + 10;
+        top: 0;
+        right: 100%;
+        bottom: 0;
+        height: 100%;
+
+        @media (min-width: @screen-lg) {
+            width: @offset-lg;
+        }
+        @media (max-width: @screen-md-max) {
+            width: @offset-md;
+        }
+        @media (max-width: @screen-sm-max) {
+            width: @offset-sm;
+        }
+        @media (max-width: @screen-xs-max) {
+            width: @offset-xs;
+        }
+        @media (max-width: (@screen-xs - 1)) {
+            width: @offset-xxs;
+        }
+
+        &.opened {
+            transform: translate3d(100%, 0, 0);
+
+            &:before {
+                content: none;
+            }
+
+            & + .swiping-side-menu-backdrop {
+                visibility: visible;
+                opacity: 1;
+                transition-delay: 0s;
+            }
+        }
+
+        &.dragging {
+            transition: none;
+
+            & + .swiping-side-menu-backdrop {
+                visibility: visible;
+                transition: none;
+            }
+        }
+
+        &.dragged {
+            transition-timing-function: ease-out;
+        }
+
+        &:not(.is-safari) {
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: 10;
+                top: 0;
+                bottom: 0;
+                right: -15px;
+                width: 15px;
+            }
+        }
+        &-content {
+            overflow-y: auto;
+            max-height: 100%;
+            padding: 0 (@grid-gutter-width / 2);
+        }
+        &-backdrop {
+            position: fixed;
+            z-index: @zindex-navbar;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            background-color: fadeout(@modal-backdrop-bg, 100 - (@modal-backdrop-opacity * 100%));
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity @speed @easing, visibility 0s @speed linear;
+        }
+    }
+}
+
+body.swiping-side-menu-opened {
+    overflow: hidden;
+}
