@@ -1,0 +1,2 @@
+# swipingSideMenu
+Draggable adaptive sidebar
