@@ -18,7 +18,7 @@ Load jQuery(1.8+) and include plugin files
 <link rel="stylesheet" href="swipingSideMenu/swipingSideMenu.css">
  
 <!-- Include js plugin -->
-<script src="jquery.swipingSideMenu/jquery.swipingSideMenu.js"></script>
+<script src="swipingSideMenu/jquery.swipingSideMenu.js"></script>
 ```
 ### 2.Set up your HTML
 ```html
