@@ -1,0 +1,96 @@
+@media (min-width: 768px) {
+    .swiping-side-menu-backdrop {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .swiping-side-menu {
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        transition: transform ease-in-out 0.33s;
+        background-color: #f8f8f8;
+        color: #777;
+        position: fixed !important;
+        z-index: 1010;
+        top: 0;
+        right: 100%;
+        bottom: 0;
+        height: 100%;
+    }
+    .swiping-side-menu.opened {
+        transform: translate3d(100%, 0, 0);
+    }
+    .swiping-side-menu.opened:before {
+        content: none;
+    }
+    .swiping-side-menu.opened + .swiping-side-menu-backdrop {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+    }
+    .swiping-side-menu.dragging {
+        transition: none;
+    }
+    .swiping-side-menu.dragging + .swiping-side-menu-backdrop {
+        visibility: visible;
+        transition: none;
+    }
+    .swiping-side-menu.dragged {
+        transition-timing-function: ease-out;
+    }
+    .swiping-side-menu:not(.is-safari):before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        bottom: 0;
+        right: -15px;
+        width: 15px;
+    }
+    .swiping-side-menu-content {
+        overflow-y: auto;
+        max-height: 100%;
+        padding: 0 15px;
+    }
+    .swiping-side-menu-backdrop {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.33s ease-in-out, visibility 0s 0.33s linear;
+    }
+}
+@media (max-width: 767px) and (min-width: 1200px) {
+    .swiping-side-menu {
+        width: 300px;
+    }
+}
+@media (max-width: 767px) and (max-width: 1199px) {
+    .swiping-side-menu {
+        width: 300px;
+    }
+}
+@media (max-width: 767px) and (max-width: 991px) {
+    .swiping-side-menu {
+        width: 300px;
+    }
+}
+@media (max-width: 767px) and (max-width: 767px) {
+    .swiping-side-menu {
+        width: 70%;
+    }
+}
+@media (max-width: 767px) and (max-width: 479px) {
+    .swiping-side-menu {
+        width: 90%;
+    }
+}
+body.swiping-side-menu-opened {
+    overflow: hidden;
+}
