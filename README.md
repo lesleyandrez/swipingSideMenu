@@ -63,3 +63,7 @@ Include "bootstrap.swipingSideMenu.less" file in your bootstrap-based less-file 
 }
 ```
 [Live Demo](http://troll-winner.16mb.com/demo/swiping-side-menu)
+
+License
+------------
+The MIT License (MIT)
