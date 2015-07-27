@@ -1,7 +1,13 @@
 # swipingSideMenu
-Draggable adaptive sidebar
+Touch enabled jQuery plugin that lets you create offscreen sidebar or side menu like on android apps.
 
-<a href="http://troll-winner.16mb.com/demo/swiping-side-menu/" target="_blank">Live Demo</a>
+[Live Demo](http://troll-winner.16mb.com/demo/swiping-side-menu)
+
+###Features:
+* Responsive
+* Touch Events
+* Fully Customizable
+* CSS3 3d Transitions
 
 Default options:
 ===============
