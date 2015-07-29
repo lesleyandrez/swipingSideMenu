@@ -27,7 +27,6 @@
         top: 0;
         right: 100%;
         bottom: 0;
-        height: 100%;
 
         @media (min-width: @screen-lg) {
             width: @offset-lg;
@@ -84,11 +83,13 @@
                 width: 15px;
             }
         }
+        
         &-content {
             overflow-y: auto;
             max-height: 100%;
             padding: 0 (@grid-gutter-width / 2);
         }
+        
         &-backdrop {
             position: fixed;
             z-index: @zindex-navbar;
@@ -107,4 +108,28 @@
 
 body.swiping-side-menu-opened {
     overflow: hidden;
+}
+
+.navbar-fixed-top {
+    .swiping-side-menu {
+        @media (max-width: @grid-float-breakpoint-max) {
+            top: @navbar-height;
+            
+            &-backdrop {
+                top: @navbar-height;
+            }
+        }
+    }
+}
+
+.navbar-fixed-bottom {
+    .swiping-side-menu {
+        @media (max-width: @grid-float-breakpoint-max) {
+            bottom: @navbar-height;
+            
+            &-backdrop {
+                bottom: @navbar-height;
+            }
+        }
+    }
 }
