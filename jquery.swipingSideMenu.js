@@ -24,11 +24,6 @@
     }
 
     Plugin.prototype.init = function () {
-        if (this.$element.attr('data-swiping-side-menu-init') === 'true') {
-            return this;
-        }
-
-        this.$element.attr('data-swiping-side-menu-init', 'true');
         this.$backdrop = $(document.createElement('div')).html(this.settings.backdrop).contents();
         this.$element.after(this.$backdrop);
         this.$body = $(this.settings.body);
@@ -218,7 +213,7 @@
 
     $(document)
         .on('ready ajaxComplete init.swipingSideMenu', function () {
-            $('[data-component="swiping-side-menu"]:not([data-swiping-side-menu-init="true"])').swipingSideMenu();
+            $('[data-component="swiping-side-menu"]').swipingSideMenu();
         })
         .on('touchstart', function () {
             // backdrop swipe working wrong without it. bug?
