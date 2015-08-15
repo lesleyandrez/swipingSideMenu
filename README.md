@@ -1,7 +1,7 @@
 # swipingSideMenu
 Touch enabled jQuery plugin that lets you create draggable (swipe) mobile offscreen sidebar or side menu like on android apps.
 
-[Live Demo](http://troll-winner.16mb.com/demo/swiping-side-menu)
+[Live Demo](http://trollwinner.github.io/swipingSideMenu/)
 
 ###Features:
 * Responsive
@@ -62,7 +62,7 @@ Include "bootstrap.swipingSideMenu.less" file in your bootstrap-based less-file 
   swipeToggleDistance: 50     // minimal distance between start and end points to fast open/close menu (px)
 }
 ```
-[Live Demo](http://troll-winner.16mb.com/demo/swiping-side-menu)
+[Live Demo](http://trollwinner.github.io/swipingSideMenu/)
 
 License
 ------------
