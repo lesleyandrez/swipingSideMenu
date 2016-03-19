@@ -234,7 +234,7 @@
     };
 
     $(document)
-        .on('ready ajaxComplete init.swipingSideMenu', function () {
+        .on('ready init.swipingSideMenu', function () {
             $('[data-component="swiping-side-menu"]').swipingSideMenu();
         })
         .on('touchstart', function () {
