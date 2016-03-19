@@ -1,10 +1,24 @@
 /*
- * swipingSideMenu - v.1.0.0
+ * swipingSideMenu - v.1.0.1
  * https://github.com/trollwinner
  */
-;(function ($, window) {
+
+(function (root, factory) {
     'use strict';
 
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object'
+        && typeof module !== 'undefined'
+        && typeof require === 'function'
+    ) {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(root.jQuery);
+    }
+})(this, function ($) {
+    'use strict';
+    
     var pluginName = 'swipingSideMenu';
     var defaults = {
         toggleElement: '[data-component="swiping-side-menu-toggle"]',
@@ -157,7 +171,9 @@
                     return;
                 }
 
-                if (Math.abs(startPointer.x - currentPointer.x) > self.settings.swipeThreshold && self.dragDirection !== 'y') {
+                if (Math.abs(startPointer.x - currentPointer.x) > self.settings.swipeThreshold
+                    && self.dragDirection !== 'y'
+                ) {
                     self.dragDirection = 'x';
                     element.css({
                         transform: 'translate3d(' + (currentPointer.x + elementPointer + elementWidth) + 'px, 0px, 0px)'
@@ -168,7 +184,9 @@
                     e.preventDefault();
                 }
 
-                if (Math.abs(startPointer.y - currentPointer.y) > self.settings.swipeThreshold && self.dragDirection !== 'x' && self.isOpened()) {
+                if (Math.abs(startPointer.y - currentPointer.y) > self.settings.swipeThreshold
+                    && self.dragDirection !== 'x' && self.isOpened()
+                ) {
                     self.dragDirection = 'y';
                 }
             })
@@ -179,13 +197,17 @@
 
                 self.dragDirection = null;
                 if ((+new Date() - touchStartDate) <= self.settings.swipeToggleDuration) {
-                    if ((startPointer.x < currentPointer.x) && Math.abs(currentPointer.x - startPointer.x) >= self.settings.swipeToggleDistance) {
+                    if ((startPointer.x < currentPointer.x)
+                        && Math.abs(currentPointer.x - startPointer.x) >= self.settings.swipeToggleDistance
+                    ) {
                         element.trigger('open.swipingSideMenu');
                     } else if ((startPointer.x - currentPointer.x) >= self.settings.swipeToggleDistance) {
                         element.trigger('close.swipingSideMenu');
                     }
                 } else {
-                    element.trigger(Math.abs(element.offset().left) < (elementWidth / 2) ? 'open.swipingSideMenu' : 'close.swipingSideMenu');
+                    element.trigger(Math.abs(element.offset().left) < (elementWidth / 2)
+                        ? 'open.swipingSideMenu'
+                        : 'close.swipingSideMenu');
                 }
 
                 element
@@ -218,4 +240,4 @@
         .on('touchstart', function () {
             // backdrop swipe working wrong without it. bug?
         });
-})(jQuery, window);
+});
